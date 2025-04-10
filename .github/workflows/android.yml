@@ -17,5 +17,5 @@ jobs:
       - name: "Install Java"
         run: "sudo apt install default-jre && java -version"
       - name: "Download and install Android SDK manager"
-        run: "wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip && unzip https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip"
+        run: "wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip && unzip commandlinetools-linux-13114758_latest.zip"
 
