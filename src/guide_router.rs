@@ -1,4 +1,3 @@
-use dioxus::logger::tracing::{error, info};
 use crate::components::NavBar;
 use dioxus::prelude::*;
 use crate::components::Favorites;
