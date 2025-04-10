@@ -53,7 +53,7 @@ jobs:
           export NDK_HOME="$ANDROID_HOME/ndk/28.0.13004108"
           export PATH="$PATH:$ANDROID_HOME/emulator"
       - name: "Build app"
-        run: dx bundle --platform android
+        run: dx bundle --platform android --verbose
       - name: "List resulting files"
         run: |
           ls bundle/android/
