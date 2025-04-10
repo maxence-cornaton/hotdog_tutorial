@@ -37,7 +37,7 @@ jobs:
         run: "sudo apt install default-jre && java -version"
       - name: "Download and install Android SDK manager"
         run: |
-          mkdir -p android-sdk/cmdline-tools && mv android-sdk/cmdline-tools
+          mkdir -p android-sdk/cmdline-tools && cd android-sdk/cmdline-tools
           wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip
           unzip commandlinetools-linux-13114758_latest.zip
           mv cmdline-tools latest
