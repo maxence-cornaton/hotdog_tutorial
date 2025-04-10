@@ -34,7 +34,7 @@ jobs:
       - name: "Update apt"
         run: "sudo apt update"
       - name: "Install dependencies"
-        run: "sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev"
+        run: "sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev pkg-config"
       - name: "Install Java"
         run: "sudo apt install default-jre && java -version"
       - name: "Install Android tools"
