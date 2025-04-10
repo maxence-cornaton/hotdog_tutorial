@@ -35,10 +35,23 @@ jobs:
         run: "sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev"
       - name: "Install Java"
         run: "sudo apt install default-jre && java -version"
-      - name: "Download and install Android SDK manager"
+      - name: "Install Android tools"
         run: |
           mkdir -p android-sdk/cmdline-tools && cd android-sdk/cmdline-tools
           wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip
           unzip commandlinetools-linux-13114758_latest.zip
           mv cmdline-tools latest
           ./latest/bin/sdkmanager --list
+          yes | ./latest/bin/sdkmanager "emulator" "ndk;28.0.13004108" "cmake;3.6.4111459"
+          cd -
+      - name: "Export vars"
+        run: |
+          export JAVA_HOME='/usr/bin/java'
+          export ANDROID_HOME="~/android-sdk/cmdline-tools/latest"
+          export NDK_HOME="$ANDROID_HOME/ndk/28.0.13004108"
+          export PATH="$PATH:$ANDROID_HOME/emulator"
+      - name: "Build app"
+        run: dx bundle --platform android
+      - name: "List resulting files"
+        run: |
+          ls bundle/android/
