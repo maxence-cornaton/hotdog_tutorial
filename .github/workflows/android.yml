@@ -12,6 +12,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Set up cargo cache
+        uses: actions/cache@v4
+        continue-on-error: false
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: "${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}"
       - name: "Add Android targets"
         run: "rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android"
       - name: "Install cargo-binstall"
@@ -26,4 +37,3 @@ jobs:
         run: "sudo apt install default-jre && java -version"
       - name: "Download and install Android SDK manager"
         run: "wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip && unzip commandlinetools-linux-13114758_latest.zip"
-
