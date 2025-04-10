@@ -12,11 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up cargo cache
+      - name: Set up cache
         uses: actions/cache@v4
         continue-on-error: false
         with:
           path: |
+            /usr/lib/jvm
+            ~/android-sdk
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
