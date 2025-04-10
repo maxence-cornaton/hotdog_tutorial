@@ -50,7 +50,7 @@ jobs:
         run: |
           export JAVA_HOME='/usr/bin/java'
           export ANDROID_HOME="~/android-sdk/cmdline-tools/latest"
-          export NDK_HOME="$ANDROID_HOME/ndk/28.0.13004108"
+          export NDK_HOME="~/android-sdk/ndk/28.0.13004108"
           export PATH="$PATH:$ANDROID_HOME/emulator"
       - name: "Build app"
         run: dx bundle --platform android --trace
