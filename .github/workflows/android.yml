@@ -51,6 +51,8 @@ jobs:
           export ANDROID_HOME="$HOME/android-sdk/cmdline-tools/latest"
           export NDK_HOME="$HOME/android-sdk/ndk/28.0.13004108"
           export PATH="$PATH:$ANDROID_HOME/emulator"
+      - name: "Build web app"
+        run: dx bundle --platform web --trace
       - name: "Build app"
         run: dx bundle --platform android --trace
       - name: "List resulting files"
