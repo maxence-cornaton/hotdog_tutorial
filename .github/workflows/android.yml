@@ -43,14 +43,13 @@ jobs:
           wget https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip
           unzip commandlinetools-linux-13114758_latest.zip
           mv cmdline-tools latest
-          ./latest/bin/sdkmanager --list
           yes | ./latest/bin/sdkmanager "emulator" "ndk;28.0.13004108" "cmake;3.6.4111459"
           cd -
       - name: "Export vars"
         run: |
           export JAVA_HOME='/usr/bin/java'
-          export ANDROID_HOME="~/android-sdk/cmdline-tools/latest"
-          export NDK_HOME="~/android-sdk/ndk/28.0.13004108"
+          export ANDROID_HOME="$HOME/android-sdk/cmdline-tools/latest"
+          export ANDROID_NDK_HOME="$HOME/android-sdk/ndk/28.0.13004108"
           export PATH="$PATH:$ANDROID_HOME/emulator"
       - name: "Build app"
         run: dx bundle --platform android --trace
