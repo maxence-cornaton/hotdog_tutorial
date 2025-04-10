@@ -34,7 +34,7 @@ jobs:
       - name: "Update apt"
         run: "sudo apt update"
       - name: "Install dependencies"
-        run: "sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev openssl"
+        run: "sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev"
       - name: "Install Java"
         run: "sudo apt install default-jre && java -version"
       - name: "Install Android tools"
@@ -49,7 +49,7 @@ jobs:
         run: |
           export JAVA_HOME='/usr/bin/java'
           export ANDROID_HOME="$HOME/android-sdk/cmdline-tools/latest"
-          export ANDROID_NDK_HOME="$HOME/android-sdk/ndk/28.0.13004108"
+          export NDK_HOME="$HOME/android-sdk/ndk/28.0.13004108"
           export PATH="$PATH:$ANDROID_HOME/emulator"
       - name: "Build app"
         run: dx bundle --platform android --trace
