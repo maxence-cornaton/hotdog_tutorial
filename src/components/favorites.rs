@@ -2,16 +2,17 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn Favorites() -> Element {
-    let mut favorites = use_resource(super::super::backend::list_dogs);
+    let mut favorites = use_server_future(super::super::backend::list_dogs)?;
+    let dogs = favorites.suspend()?;
 
-    match favorites.suspend() {
+    match dogs() {
         Ok(dogs) => {
             rsx! {
                 div {
                     id: "favorites",
                     div {
                         id: "favorites-container",
-                        for (id, url) in dogs().unwrap() {
+                        for (id, url) in dogs {
                             div {
                                 key: id,
                                 class: "favorite-dog",
@@ -32,6 +33,6 @@ pub fn Favorites() -> Element {
                 }
             }
         }
-        Err(_) => { rsx!{} }
+        Err(_) => rsx! {},
     }
 }
