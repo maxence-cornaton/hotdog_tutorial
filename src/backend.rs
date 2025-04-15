@@ -40,13 +40,13 @@ thread_local! {
     };
 }
 
-// #[server]
+#[server]
 pub async fn save_dog(image: String) -> Result<(), ServerFnError> {
     DB.with(|conn| conn.execute("INSERT INTO dogs (url) values (?1)", &[&image]))?;
     Ok(())
 }
 
-// #[server]
+#[server]
 pub async fn list_dogs() -> Result<Vec<(usize, String)>, ServerFnError> {
     let dogs = DB.with(|f| {
         f.prepare("SELECT id, url FROM dogs ORDER BY id DESC LIMIT 10")
@@ -60,7 +60,7 @@ pub async fn list_dogs() -> Result<Vec<(usize, String)>, ServerFnError> {
     Ok(dogs)
 }
 
-// #[server]
+#[server]
 pub async fn delete_dog(id: usize) -> Result<(), ServerFnError> {
     DB.with(|conn| {
         conn.prepare("DELETE FROM dogs WHERE id = ?1")
